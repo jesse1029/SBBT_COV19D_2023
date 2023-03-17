@@ -1,0 +1,16 @@
+for eca_nfnet_l0 model with cross validation
+
+training stage
+1. run "submit0_eca_nfnet_l0_cv_training.py" to get 5 submodel_weights via cross validation
+testing/inference stage
+2. run "submit0_eca_nfnet_l0_get_test_pred_thought_5weights.py" to get testing data 's predicted probability via 5 submodel_weights.
+3. run "submit1_eca_nfnet_l0_get_cv_total_pred.py" to combine 5 predicted probability into a csv file.
+
+
+
+for threshold selection
+
+1. run "submit1_eca_nfnet_l0_get_cv_total_pred.py" to get the predicted probability of 5 fold validation data via 5 submodel_weights then get csv file
+2. run "submit1_eca_nfnet_l0_get_cv_total_pred.py" to concat 5 csv to one csv file
+3. run "submit2_eca_nfnet_l0_get_cv_pred_combine_true_label.py" to combine data's predicted probability and true label
+4. run "submit3_eca_nfnet_l0_get_cv_binary_get_best_threshold.py" to calculate f1 score with different threshold
